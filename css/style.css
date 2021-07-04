@@ -1,0 +1,365 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+
+
+*{
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+:root{
+    /*---------------light mode-----------------*/
+    --header-footer:#219ebc;
+    --aside:#f5f3f4;
+    --opt1:#ac46a1;
+    --opt2:#973aa8;
+    --opt3: #822faf;
+    /*----------------dark mode------------------*/
+    --dark-header:#222831;
+    --dark-aside:#393E46;
+    --dark-back: #525252;
+    --dark-buttom:#e6ae15; 
+    --dark-opt1: #CA3E47;  
+    --dark-opt2: #ba181b;  
+    --dark-opt3: #a4161a;  
+}
+
+
+/*---------------------Header--------------------*/
+header{
+    background-color: var(--header-footer);
+    height: 15vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+header .logo{
+    display: flex;
+    align-items: center;
+    }
+header .logo img{
+    padding-left: 40px;
+    height: 90px;
+    }
+header .logo h1{
+    color: whitesmoke;
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 3rem;
+    }
+header nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    color: white;   
+    }
+header nav ul{
+    display: flex;
+    list-style-type: none;     
+    }
+header nav ul li{
+    margin-right:30px ;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    }
+header nav ul #setting #list{
+    display: none;
+    }
+header nav ul #setting #list.show { 
+    display: block; 
+    position: absolute;
+    padding: 5px;
+    margin-top: 5px;
+    margin-right: 150px; 
+    right: 0;
+    background-color: var(--dark-back);
+    list-style-type: none;
+    }
+header nav ul #setting #list li{
+    padding:5px;
+    }
+header nav label{
+    margin-right:30px ;
+}   
+header nav i{
+    margin-right:30px ;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+
+
+/*-------------------Main------------------*/
+main{
+    display: flex;
+    height: 77vh;
+    }
+main .options{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--aside);
+    }
+main .options button{
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    padding: 10px;
+    border: 3px solid rgb(114, 114, 114);
+    cursor: pointer; 
+    }
+main .options .rock{
+    /*background-image: linear-gradient(to bottom right, var(--opt1), white);*/
+    background-color: var(--opt1);
+    align-self: flex-end;
+    margin-right: 20%;   
+    }
+main .options .paper{
+    /*background-image: linear-gradient(to right, var(--opt2), white);*/
+    background-color: var(--opt2);
+    align-self: flex-start;
+    margin-left: 20%;
+    }
+main .options .scissors{
+    /*background-image: linear-gradient(to top right, var(--opt3), white);*/
+    background-color: var(--opt3);
+    align-self: flex-end;
+    margin-right: 20%;
+    }
+main .options .spock{
+    background-color: var(--opt3);
+    align-self: center;
+    display: none;
+    }
+main .options .lizard{
+    background-color: var(--opt1);
+    align-self: center;
+    display: none;
+    }
+main .options button img{
+    width: 100%;
+    }
+main .play{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 55%; 
+    }
+main .play div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;   
+    }
+main .play div div{
+    width: 40%;
+    border-radius: 20px;
+    background-color: var(--aside);
+    border: 2px solid rgb(114, 114, 114);   
+    box-shadow: -11px 13px 24px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: -11px 13px 24px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: -11px 13px 24px 0px rgba(0,0,0,0.75);    
+    }
+main .play div div img{
+    width: 100%;
+    padding: 10px;
+    }
+main .play div .choice1 img{
+    transform: scaleX(-1);
+    }
+main .play div h3{
+    padding: 10px;
+    font-size: 4rem;
+    color: var(--dark-aside);
+    }
+main .play .barra button{
+    border: none;
+    background-color: transparent;
+    font-size: 4rem;
+    color: var(--opt2);
+    cursor: pointer; 
+    } 
+main .play .barra #timer{
+    color: white;
+    padding: 15px;
+    background-color: var(--opt2);
+    border-radius: 20px;
+    border: none;
+    font-size: 2rem;
+    font-weight: bold;
+    width: 100px;
+    box-shadow: none;
+    }
+main aside{
+    background-color: var(--aside);
+    width: 20%;
+    }
+main aside h2{
+    background-color: var(--opt2);
+    text-align: center;
+    padding: 10px;
+    color: white;
+    text-transform: uppercase;
+    }
+main aside .winner p{
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+    }
+
+
+
+main .rule1{
+    display: none;
+} 
+main .rule1.show{
+    display: block; 
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background-color: var(--dark-back);
+    height: 77vh;
+    width: 40vw;
+    color: white;
+    border-radius: 10px;
+}
+main .rule1.show img{
+    height: 60%;
+    border-radius: 20%;
+    margin: 5%;
+}
+main .rule1.show i{
+    position: absolute;
+    top:10px;
+    right: 10px;
+    font-size: 30px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
+
+/*--------------------Footer------------------*/
+footer{
+    background-color: var(--header-footer);
+    height: 8vh;
+    text-align: center;
+    color:white;
+    padding: 15px;
+}
+
+
+/*---------------------Switch Dark-ligth mode----------------------*/
+/*The box around the moving wheel (slider)*/
+nav .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+/*to hide the checkbox*/
+nav .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+nav .switch .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+  }
+nav .switch .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+input:checked + .slider { 
+    background-color: var(--dark-buttom); 
+  }  
+input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+
+/*-----------------Dark mode----------------*/  
+.dark{
+    background-color: var(--dark-back);
+}
+.dark header, .dark footer{
+    background-color: var(--dark-header);
+}
+.dark main .options, .dark main aside{
+    background-color: var(--dark-aside);
+}
+.dark main aside h2{
+    background-color: var(--dark-buttom);
+}
+.dark main .options div{
+    border: 3px solid var(--dark-buttom);  
+}
+.dark main .options .rock{
+    background-color: var(--dark-opt1);  
+}
+.dark main .options .paper{
+    background-color: var(--dark-opt2);  
+}
+.dark main .options .scissors{
+    background-color: var(--dark-opt3);  
+}
+.dark main .play .barra i{
+    color: var(--dark-buttom);
+}
+.dark main .play .barra #timer{
+    background-color: var(--dark-buttom);
+}
+.dark main .play div h3{
+    color: whitesmoke;
+}
+.dark main aside .winner p{
+    color: whitesmoke;
+}
+
+
+/*---------------------MEDIA QUERY--------------------------*/
+@media only screen and (orientation:portrait){
+    body {  
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+}
+
+@media (max-width: 460px) and (oriantation:landscape) {
+    main .options button{
+        height: 70px;
+        width: 70px;
+        }
+    main aside .winner p{
+        padding: 5px;
+    }
+    header nav i.fa-question-circle{
+        display: none;
+    }
+}
+
+
+

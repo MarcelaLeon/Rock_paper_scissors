@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/game.png">
+    <title>Rock paper scissors</title>
+    <script src="https://kit.fontawesome.com/4d8d99ca21.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+        <header>
+            <div class="logo">
+                <img src="img/target.png" alt="logo">
+                <h1>RPS</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li id="new">New</li>
+                    <li id="setting">Settings
+                        <ul id="list">
+                            <li class="time" value="10">10 segundos</li>
+                            <li class="time" value="30"> 30 segundos</li>
+                            <li class="time" value="60">1 minuto</li>
+                        </ul>
+                    </li>
+                    <li id="rules">Rules</li>
+                </ul>
+                <label class="switch">
+                    <input type="checkbox">
+                    <div class="slider"></div>
+                </label>
+                <i class="fas fa-question-circle"></i>  
+            </nav>
+        </header>
+        <main >
+            <div class="options">
+                <button class="rock" id="option" value="1"><img src="img/rock.png" alt="rock"></button>
+                <button class="spock" id="option"><img src="img/spock.png" alt="spock"></button>
+                <button class="paper" id="option"><img src="img/paper.png" alt="paper"></button>
+                <button class="lizard" id="option"><img src="img/lizard.png" alt="lizard"></button>
+                <button class="scissors" id="option"><img src="img/scissors.png" alt="scissors"></button>
+            </div >
+            <div class="play">
+                <div>
+                    <div class="choice1"><img id="you-choice" src="img/boxing.png" alt="choice1"></div>
+                    <h3>vs</h3>
+                    <div class="choice2"><img id="machine-choice"src="img/boxing.png" alt="choice2"></div>
+                </div>
+                <div class="barra">
+                    <button id="reset"><i class="fas fa-undo-alt"></i></button>
+                    <button id="play"><i class="fab fa-google-play"></i></button>
+                    <div id="timer"></div>
+                </div>
+            </div>
+            <aside>
+                <h2>Winner</h2>
+                <div class="winner"></div>
+            </aside>
+
+            <div class="rule1">
+                <i class="far fa-times-circle"></i>
+                <img src="img/rules1.png" alt="rules">
+                <li>Rock wins against scissors</li>
+                <li>Scissors win against paper</li>
+                <li>Paper wins against rock</li>
+                
+            </div>
+
+        </main>   
+        <footer>
+            <p>Copyright ©</p>
+        </footer>
+    <script src="js/script2.js"></script>
+</body>
+</html>
