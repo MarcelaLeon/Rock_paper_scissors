@@ -338,27 +338,34 @@ input:checked + .slider:before {
 
 
 /*---------------------MEDIA QUERY--------------------------*/
-@media only screen and (orientation:portrait){
-    body {  
-        -webkit-transform: rotate(90deg);
-        -moz-transform: rotate(90deg);
-        -o-transform: rotate(90deg);
-        -ms-transform: rotate(90deg);
-        transform: rotate(90deg);
-    }
-}
+@media (max-width: 460px) and (orientation:portrait) {
+    body {
+        display: none;
+        }
+    }  
 
-@media (max-width: 460px) and (oriantation:landscape) {
+
+@media (max-width: 640px) and (orientation:landscape) {
+    header .logo img{
+        height: 60px;
+    }
+    header .logo h1{
+        font-size: 2rem;
+        }
+    header nav ul li{
+        margin-right:20px ;
+    }
     main .options button{
-        height: 70px;
-        width: 70px;
+        height: 80px;
+        width: 80px;
         }
     main aside .winner p{
         padding: 5px;
     }
-    header nav i.fa-question-circle{
-        display: none;
+    footer{
+        padding: 6px;
     }
+
 }
 
 
