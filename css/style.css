@@ -425,6 +425,16 @@ input:checked + .slider:before {
         }
     }  
 
+    
+@media (max-width: 900px) and (orientation:landscape) {
+    main aside .winner p{
+        padding: 7px;
+    }
+    header .logo img{
+        height: 57px;
+    }
+}
+
 
 @media (max-width: 680px) and (orientation:landscape) {
     header .logo img{
@@ -441,7 +451,7 @@ input:checked + .slider:before {
         width: 80px;
         }
     main aside .winner p{
-        padding: 5px;
+        padding: 6px;
     }
     footer{
         padding: 6px;
@@ -449,5 +459,12 @@ input:checked + .slider:before {
 
 }
 
-
-
+@media (max-width: 570px) and (orientation:landscape) {
+    main aside .winner p{
+        padding: 3px;
+    }
+    main .options button{
+        height: 70px;
+        width: 70px;
+        }
+}
