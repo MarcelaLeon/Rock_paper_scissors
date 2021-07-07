@@ -79,11 +79,15 @@ header nav ul #setting #list.show {
 header nav ul #setting #list li{
     padding:5px;
     }
+
+header nav .fa-bars{
+    display: none;
+}    
 header nav label{
     margin-right:30px ;
 }   
 header nav i{
-    margin-right:30px ;
+    margin-right:30px;
     font-size: 2rem;
     cursor: pointer;
 }
@@ -210,7 +214,7 @@ main aside .winner p{
     }
 
 
-
+/*------------------------Rule-------------------*/
 main .rule1{
     display: none;
 } 
@@ -339,13 +343,90 @@ input:checked + .slider:before {
 
 /*---------------------MEDIA QUERY--------------------------*/
 @media (max-width: 460px) and (orientation:portrait) {
-    body {
+    header .logo h1{
+        font-size: 2.5rem;
+    }
+    header .logo img{
+        padding-left: 10px;
+    }
+    header nav ul{
         display: none;
+    }
+    header nav label, header nav i{                
+        margin-right:10px ;
+    }                
+    header nav .fa-bars{
+        display: block;
+    }
+    header nav ul.show{
+        display: block;
+        position: absolute;
+        padding: 10px;
+        margin-top: 120px;
+        margin-right: 50px; 
+        right: 0;
+        background-color: var(--aside);
+        color: var(--dark-header);
+    }
+    .dark header nav ul.show{
+        background-color: var(--dark-aside);
+        color: var(--aside);
+    }
+    header nav ul #setting #list.show { 
+        padding: 3px;
+        margin-right: 3px; 
+        background-color: var(--dark-back); 
+        list-style-type: none;
+        color: var(--aside);         
+    }
+
+    .dark header nav ul #setting #list.show { 
+        background-color: var(--aside);
+        color: var(--dark-header);        
+    }
+
+    header nav ul #setting #list li{
+        font-size: 0.8rem;
+        margin: 0;                
+    }
+    main .rule1.show{
+        width: 100vw;
+    }
+    main{
+        flex-direction: column;
+    }
+    main .options{
+        flex-direction: row;
+        width: 100%;
+        height: 20vh;
+    }
+    main .options button{
+        height: 80px;
+        width: 80px;
+    }
+    main .options .rock , main .options .paper , main .options .scissors{
+        margin: 10px;
+        align-self: center;
+    }
+    main .play{
+        width: 100%;
+        height: 40vh;
+    }
+    main aside{
+        width: 100%;
+    }
+    main aside h2{
+        padding: 8px;
+        }
+    main aside .winner p{
+        display: inline-block;
+        width: 33.3%;
+        padding: 4px;
         }
     }  
 
 
-@media (max-width: 640px) and (orientation:landscape) {
+@media (max-width: 680px) and (orientation:landscape) {
     header .logo img{
         height: 60px;
     }

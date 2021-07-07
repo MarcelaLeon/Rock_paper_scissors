@@ -116,8 +116,16 @@ closeButton.addEventListener("click",function(){
 /**----------------Click New------------------- */
 let newButton = document.querySelector("#new");
 newButton.addEventListener("click",function(){
-  alert("Coming soon...💣")
+    alert("Coming soon...💣")
 })
+
+/**----------------Click menu------------------- */
+let menuButton = document.querySelector(".fa-bars");
+let menu = document.querySelector("#menu")
+menuButton.addEventListener("click",function(){
+  menu.classList.toggle("show");
+})
+
 
 /**----------------Click ?------------------- */
 let questionButton = document.querySelector(".fa-question-circle");
