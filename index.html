@@ -17,9 +17,14 @@
             </div>
             <nav>
                 <ul id="menu">
-                    <li id="new">New</li>
+                    <li id="new">New
+                        <ul id="list-mode">
+                            <li class="clasic">Clasic</li>
+                            <li class="lizard-spock">Lizard-Spock</li>
+                        </ul>
+                    </li>
                     <li id="setting">Settings
-                        <ul id="list">
+                        <ul id="list-time">
                             <li class="time" value="10">10 segundos</li>
                             <li class="time" value="30"> 30 segundos</li>
                             <li class="time" value="60">1 minuto</li>
@@ -37,7 +42,7 @@
         </header>
         <main >
             <div class="options">
-                <button class="rock" id="option" value="1"><img src="img/rock.png" alt="rock"></button>
+                <button class="rock" id="option"><img src="img/rock.png" alt="rock"></button>
                 <button class="spock" id="option"><img src="img/spock.png" alt="spock"></button>
                 <button class="paper" id="option"><img src="img/paper.png" alt="paper"></button>
                 <button class="lizard" id="option"><img src="img/lizard.png" alt="lizard"></button>
@@ -59,20 +64,31 @@
                 <h2>Winner</h2>
                 <div class="winner"></div>
             </aside>
-
-            <div class="rule1">
-                <i class="far fa-times-circle"></i>
-                <img src="img/rules1.png" alt="rules">
-                <li>Rock wins against scissors</li>
-                <li>Scissors win against paper</li>
-                <li>Paper wins against rock</li>
-                
+            <div class="rule-back">
+                <div class="rule">
+                        <i class="far fa-times-circle"></i>
+                    <div>
+                        <img src="img/rules1.png" alt="rules">
+                        <li>Rock wins against scissors</li>
+                        <li>Scissors win against paper</li>
+                        <li>Paper wins against rock</li>
+                    </div>
+                    <div>
+                        <img src="img/rules2.png" alt="rules">
+                        <li>Rock wins against scissors and lizard</li>
+                        <li>Scissors win against paper and lizard</li>
+                        <li>Paper wins against rock and spock</li>
+                        <li>Spock wins against scissors and rock</li>
+                        <li>Lizard wins against paper and spock</li>
+                    </div>
+            </div>                
             </div>
 
         </main>   
         <footer>
             <p>Copyright ©</p>
         </footer>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

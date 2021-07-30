@@ -26,6 +26,11 @@ inLocal.forEach(function(element) {
   winner.innerHTML += `<p>${element}</p>`;
 })
 
+
+function recarga() {
+  setTimeout(function(){ window.location.href = "index.html"}, 3000);
+}
+
 /**----------------Timekeeper-------------------- */
 function myFunction() {
     
@@ -45,8 +50,16 @@ function myFunction() {
         }
         inLocal.push("You 🥇 ");
         localStorage.setItem("winners", JSON.stringify(inLocal));
-        alert("You have won this round of the game 😎")
-        location.reload();
+        Swal.fire({
+          imageUrl: 'img/win.gif',
+          imageWidth: 100,
+          imageHeight: 100,
+          title: 'You have won this round',
+          showConfirmButton: false,
+          timer: 2000
+        })
+        recarga();
+        
       }
     else if(lost>won){
       if(inLocal.length > 6){
@@ -55,8 +68,16 @@ function myFunction() {
       }
       inLocal.push("Machine 💻");
         localStorage.setItem("winners", JSON.stringify(inLocal));
-        alert("You have lost this round of the game,\n good luck next time 😥")
-        location.reload();
+        localStorage.setItem("winners", JSON.stringify(inLocal));
+        Swal.fire({
+          imageUrl: 'img/lose.gif',
+          imageWidth: 100,
+          imageHeight: 100,
+          title: 'You have lost this round',
+          showConfirmButton: false,
+          timer: 2000
+        })
+        recarga();
        }
     else{
       if(inLocal.length > 6){
@@ -65,8 +86,15 @@ function myFunction() {
       }
       inLocal.push("Nobody");
         localStorage.setItem("winners", JSON.stringify(inLocal));
-        alert("You have tied this round of the game 🤪")
-        location.reload();
+        Swal.fire({
+          imageUrl: 'img/tie.gif',
+          imageWidth: 100,
+          imageHeight: 100,
+          title: 'You have tied this round',
+          showConfirmButton: false,
+          timer: 2000
+        })
+        recarga();
        }  
     
      clearInterval(timer);
@@ -74,9 +102,41 @@ function myFunction() {
   
 }
 
+
+/**----------------Click new------------------- */
+let newButton = document.querySelector("#new");
+let listMode = document.querySelector("#list-mode");
+newButton.addEventListener("click",function(){
+  listMode.classList.toggle("show");
+})
+let lizard = document.querySelector(".lizard");
+let spock = document.querySelector(".spock");
+
+/**----------------Click clasic------------------- */
+let clasicButton = document.querySelector(".clasic");
+clasicButton.addEventListener("click",function(){
+  lizard.classList.remove("show");
+  spock.classList.remove("show");
+  localStorage.setItem('spockMode', 'disabled');
+})
+
+/**----------------Click lizard-spock------------------- */
+let lizardSpockButton = document.querySelector(".lizard-spock");
+lizardSpockButton.addEventListener("click",function(){
+  lizard.classList.add("show");
+  spock.classList.add("show");
+  localStorage.setItem('spockMode', 'enabled');
+});
+
+if(localStorage.getItem('spockMode') == 'enabled'){
+  lizard.classList.add("show");
+  spock.classList.add("show");
+}
+
+
 /**----------------Click setting------------------- */
 let setting = document.querySelector("#setting");
-let list = document.querySelector("#list");
+let list = document.querySelector("#list-time");
 setting.addEventListener("click",function(){
   list.classList.toggle("show");
 })
@@ -103,21 +163,18 @@ times.forEach(function(time){
 })
 
 /**----------------Click rules------------------- */
-let rules = document.querySelector("#rules");
-let rule1 = document.querySelector(".rule1");
+let rulesButton = document.querySelector("#rules");
+let rule = document.querySelector(".rule-back");
 let closeButton = document.querySelector(".fa-times-circle")
-rules.addEventListener("click",function(){
-  rule1.classList.toggle("show");
+
+rulesButton.addEventListener("click",function(){
+  rule.classList.toggle("show");
 })
 closeButton.addEventListener("click",function(){
-  rule1.classList.toggle("show"); 
+  rule.classList.toggle("show"); 
 })
 
-/**----------------Click New------------------- */
-let newButton = document.querySelector("#new");
-newButton.addEventListener("click",function(){
-    alert("Coming soon...💣")
-})
+
 
 /**----------------Click menu------------------- */
 let menuButton = document.querySelector(".fa-bars");
@@ -130,7 +187,12 @@ menuButton.addEventListener("click",function(){
 /**----------------Click ?------------------- */
 let questionButton = document.querySelector(".fa-question-circle");
 questionButton.addEventListener("click",function(){
-  alert("Coming soon...💣")
+  Swal.fire({
+    icon:"info",
+    title: 'Coming soon...💣',
+    showConfirmButton: false,
+    timer: 2000
+  })
 })
 
 
@@ -171,7 +233,6 @@ if(localStorage.getItem('darkMode') == 'enabled'){
 
 
 /**-------------------Choice----------------- */
-
 function play(){  
   if(!timer) {
       timer = window.setInterval(function() { 
@@ -184,7 +245,9 @@ function play(){
   
   option.forEach(function(choice){  
     choice.addEventListener("click", function(){
-      if (enabled){
+
+      /**--------------------------Clasic mode------------------------------- */
+      if (enabled==true && localStorage.getItem('spockMode') == 'disabled'){
       /**---------------------------rock----------------------------- */
         if(choice.classList.value==="rock"){
           let machineChoice = Math.floor( Math.random() * 3 + 1 );
@@ -238,7 +301,145 @@ function play(){
           won++;
           }
         }
-      } 
+      }
+      
+      /**-----------------------Lizard-Spock mode--------------------- */
+      if (enabled==true && localStorage.getItem('spockMode') == 'enabled'){
+        /**---------------------------rock----------------------------- */
+          if(choice.classList.value==="rock"){
+            let machineChoice = Math.floor( Math.random() * 5 + 1 );
+            youOption.src="img/rock.png";
+            if(machineChoice===1){
+              machineOption.src="img/rock.png";
+              tied++;
+            }
+          else if(machineChoice===2){
+            machineOption.src="img/paper.png";
+            lost++;
+          }
+          else if(machineChoice===5){
+            machineOption.src="img/spock.png";
+            lost++;
+          }
+          else if(machineChoice===4){
+            machineOption.src="img/lizard.png";
+            won++;
+          }
+          else{
+            machineOption.src="img/scissors.png";
+            won++;
+          }
+        }
+  
+        /**-----------------------------paper---------------------------- */
+        else if(choice.classList.value==="paper"){
+          let machineChoice = Math.floor( Math.random() * 5 + 1 );
+          youOption.src="img/paper.png";
+          if(machineChoice===2){
+            machineOption.src="img/paper.png";
+            tied++;
+          }
+          else if(machineChoice===3){
+            machineOption.src="img/scissors.png";
+            lost++;
+          }
+          else if(machineChoice===4){
+            machineOption.src="img/lizard.png";
+            lost++;
+          }
+          else if(machineChoice===5){
+            machineOption.src="img/spock.png";
+            won++;
+          }
+          else{
+            machineOption.src="img/rock.png";
+            won++;
+          }
+        }
+        
+        /**---------------------------scissors--------------------------- */
+        else if(choice.classList.value==="scissors"){
+          let machineChoice = Math.floor( Math.random() * 5 + 1 );
+          youOption.src="img/scissors.png";
+          if(machineChoice===3){
+            machineOption.src="img/scissors.png";
+            tied++;
+            }
+          else if(machineChoice===1){
+            machineOption.src="img/rock.png";
+            lost++;
+            }
+          else if(machineChoice===5){
+            machineOption.src="img/spock.png";
+            lost++;
+            }
+          else if(machineChoice===4){
+            machineOption.src="img/lizard.png";
+            won++;
+            }
+          else{
+            machineOption.src="img/paper.png";
+            won++;
+            }
+          }
+
+          /**---------------------------lizard--------------------------- */
+        else if(choice.classList.value==="lizard show"){
+          let machineChoice = Math.floor( Math.random() * 5 + 1 );
+          youOption.src="img/lizard.png";
+          if(machineChoice===4){
+            machineOption.src="img/lizard.png";
+            tied++;
+            }
+          else if(machineChoice===1){
+            machineOption.src="img/rock.png";
+            lost++;
+            }
+          else if(machineChoice===3){
+            machineOption.src="img/scissors.png";
+            lost++;
+            }
+          else if(machineChoice===5){
+            machineOption.src="img/spock.png";
+            won++;
+            }
+          else{
+            machineOption.src="img/paper.png";
+            won++;
+            }
+          }
+
+        /**---------------------------spock--------------------------- */
+        else if(choice.classList.value==="spock show"){
+          let machineChoice = Math.floor( Math.random() * 5 + 1 );
+          youOption.src="img/spock.png";
+          if(machineChoice===5){
+            machineOption.src="img/spock.png";
+            tied++;
+            }
+          else if(machineChoice===2){
+            machineOption.src="img/paper.png";
+            lost++;
+            }
+          else if(machineChoice===4){
+            machineOption.src="img/lizard.png";
+            lost++;
+            }
+          else if(machineChoice===3){
+            machineOption.src="img/scissors.png";
+            won++;
+            }
+          else{
+            machineOption.src="img/rock.png";
+            won++;
+            }
+          }
+
+        
+        }
+
+
+
     })
   })  
 }

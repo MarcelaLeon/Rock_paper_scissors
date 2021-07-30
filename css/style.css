@@ -63,20 +63,32 @@ header nav ul li{
     font-weight: bold;
     cursor: pointer;
     }
-header nav ul #setting #list{
+header nav ul #setting #list-time, header nav ul #new #list-mode {
     display: none;
     }
-header nav ul #setting #list.show { 
+header nav ul #setting #list-time.show, header nav ul #new #list-mode.show { 
     display: block; 
     position: absolute;
+    background-color: var(--dark-back);
+    list-style-type: none;
+    }
+
+header nav ul #setting #list-time.show{ 
     padding: 5px;
     margin-top: 5px;
     margin-right: 150px; 
     right: 0;
-    background-color: var(--dark-back);
-    list-style-type: none;
     }
-header nav ul #setting #list li{
+
+header nav ul #new #list-mode.show { 
+    padding: 5px;
+    margin-top: 5px;
+    margin-right: 250px; 
+    right: 0;
+    }
+
+
+header nav ul #setting #list-time li, header nav ul #new #list-mode li{
     padding:5px;
     }
 
@@ -142,6 +154,22 @@ main .options .lizard{
     align-self: center;
     display: none;
     }
+main .options .spock.show{
+    display: block;
+    }
+main .options .lizard.show{
+    display: block;
+    }
+
+
+
+
+
+
+
+
+
+
 main .options button img{
     width: 100%;
     }
@@ -173,6 +201,41 @@ main .play div div img{
 main .play div .choice1 img{
     transform: scaleX(-1);
     }
+
+
+
+
+    
+    main .play div div img[src*="img/boxing.png"]{
+        /*animation: girar 0.9s infinite linear;*/
+        }
+
+    @keyframes girar{
+        0%{
+           transform: rotate(0deg);
+        }
+        20%{
+           transform: rotate(72deg);
+        }
+        40%{
+           transform: rotate(144deg);
+        }
+        60%{
+           transform: rotate(216deg);
+        }
+        80%{
+           transform: rotate(288deg);
+        }
+        100%{
+           transform: rotate(360deg);
+        }
+    }
+
+
+
+
+
+
 main .play div h3{
     padding: 10px;
     font-size: 4rem;
@@ -215,29 +278,44 @@ main aside .winner p{
 
 
 /*------------------------Rule-------------------*/
-main .rule1{
+main .rule-back{
     display: none;
 } 
-main .rule1.show{
+main .rule-back.show{
+    display: block;
+    position: absolute;
+    top:0;
+    width: 100vw;
+    height: 100vh;
+} 
+main .rule{
     display: block; 
     position: absolute;
     margin-left: auto;
     margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
     left: 0;
     right: 0;
+    top: 0;
+    bottom: 0;
     text-align: center;
     background-color: var(--dark-back);
     height: 77vh;
-    width: 40vw;
+    width: 90vw;
     color: white;
     border-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
 }
-main .rule1.show img{
-    height: 60%;
+main .rule div img{
+    height: 300px; 
+    width: 300px;
     border-radius: 20%;
-    margin: 5%;
+    margin: 10px;
+    background-color: white;
 }
-main .rule1.show i{
+main .rule i{
     position: absolute;
     top:10px;
     right: 10px;
@@ -325,6 +403,12 @@ input:checked + .slider:before {
     background-color: var(--dark-opt2);  
 }
 .dark main .options .scissors{
+    background-color: var(--dark-opt3);  
+}
+.dark main .options .lizard{
+    background-color: var(--dark-opt2);  
+}
+.dark main .options .spock{
     background-color: var(--dark-opt3);  
 }
 .dark main .play .barra i{
@@ -423,7 +507,18 @@ input:checked + .slider:before {
         width: 33.3%;
         padding: 4px;
         }
-    }  
+    
+
+}  
+@media (max-width: 630px) and (orientation:portrait) {
+    main .rule{
+        flex-direction: column;
+    }
+    main .rule div img{
+        height: 150px; 
+        width: 150px;
+    }
+}
 
     
 @media (max-width: 900px) and (orientation:landscape) {
@@ -433,8 +528,11 @@ input:checked + .slider:before {
     header .logo img{
         height: 57px;
     }
+    main .rule div img{
+        height: 200px; 
+        width: 200px;
+    }
 }
-
 
 @media (max-width: 680px) and (orientation:landscape) {
     header .logo img{
@@ -456,7 +554,10 @@ input:checked + .slider:before {
     footer{
         padding: 6px;
     }
-
+    main .rule div img{
+        height: 150px; 
+        width: 150px;
+    }
 }
 
 @media (max-width: 570px) and (orientation:landscape) {
@@ -466,5 +567,5 @@ input:checked + .slider:before {
     main .options button{
         height: 70px;
         width: 70px;
-        }
+    }
 }
