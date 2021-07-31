@@ -1,0 +1,54 @@
+/*-----------------Dark mode----------------*/  
+.dark{
+    background-color: var(--dark-back);
+}
+.dark header, .dark footer{
+    background-color: var(--dark-header);
+}
+.dark main .options, .dark main aside{
+    background-color: var(--dark-aside);
+}
+.dark main aside h2{
+    background-color: var(--dark-buttom);
+}
+.dark main .options div{
+    border: 3px solid var(--dark-buttom);  
+}
+.dark main .options .rock{
+    background-color: var(--dark-opt1);  
+}
+.dark main .options .paper{
+    background-color: var(--dark-opt2);  
+}
+.dark main .options .scissors{
+    background-color: var(--dark-opt3);  
+}
+.dark main .options .lizard{
+    background-color: var(--dark-opt2);  
+}
+.dark main .options .spock{
+    background-color: var(--dark-opt3);  
+}
+.dark main .options button:hover, .dark main .options button:focus {
+    box-shadow: 0 0 10px 4px var(--dark-opt2);
+    background-color: #ccc;      
+    }
+.dark main .play .barra i{
+    color: var(--dark-buttom);
+}
+.dark main .play .barra button#play::after {
+    border: 2px solid var(--dark-buttom);
+}
+.dark main .play .barra button:hover::after, .dark main .play .barra button:focus::after {
+    animation: none;
+    display: none;      
+}
+.dark main .play .barra #timer{
+    background-color: var(--dark-buttom);
+}
+.dark main .play div h3{
+    color: whitesmoke;
+}
+.dark main aside .winner p{
+    color: whitesmoke;
+}

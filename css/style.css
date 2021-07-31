@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+@import "dark.css";
 
 
 *{
@@ -72,22 +73,22 @@ header nav ul #setting #list-time.show, header nav ul #new #list-mode.show {
     background-color: var(--dark-back);
     list-style-type: none;
     }
-
 header nav ul #setting #list-time.show{ 
     padding: 5px;
     margin-top: 5px;
     margin-right: 150px; 
     right: 0;
+    background-color: var(--aside);
+    color: var(--dark-header);
     }
-
 header nav ul #new #list-mode.show { 
     padding: 5px;
     margin-top: 5px;
     margin-right: 250px; 
     right: 0;
+    background-color: var(--aside);
+    color: var(--dark-header);
     }
-
-
 header nav ul #setting #list-time li, header nav ul #new #list-mode li{
     padding:5px;
     }
@@ -120,26 +121,23 @@ main .options{
     }
 main .options button{
     border-radius: 50%;
-    height: 100px;
-    width: 100px;
+    height: 90px;
+    width: 90px;
     padding: 10px;
     border: 3px solid rgb(114, 114, 114);
     cursor: pointer; 
     }
 main .options .rock{
-    /*background-image: linear-gradient(to bottom right, var(--opt1), white);*/
     background-color: var(--opt1);
     align-self: flex-end;
     margin-right: 20%;   
     }
 main .options .paper{
-    /*background-image: linear-gradient(to right, var(--opt2), white);*/
     background-color: var(--opt2);
     align-self: flex-start;
     margin-left: 20%;
     }
 main .options .scissors{
-    /*background-image: linear-gradient(to top right, var(--opt3), white);*/
     background-color: var(--opt3);
     align-self: flex-end;
     margin-right: 20%;
@@ -154,22 +152,18 @@ main .options .lizard{
     align-self: center;
     display: none;
     }
+main .options button:hover, main .options button:focus {
+    box-shadow: 0 0 10px 4px var(--opt2);
+    background-color: #ccc;
+    height: 105px;
+    width: 105px;      
+    }
 main .options .spock.show{
     display: block;
     }
 main .options .lizard.show{
     display: block;
     }
-
-
-
-
-
-
-
-
-
-
 main .options button img{
     width: 100%;
     }
@@ -198,17 +192,15 @@ main .play div div img{
     width: 100%;
     padding: 10px;
     }
-main .play div .choice1 img{
-    transform: scaleX(-1);
+main .play div .choice1 img[src*="img/lizard.png"]{
+    transform: scaleX(1);
     }
-
-
-
-
-    
-    main .play div div img[src*="img/boxing.png"]{
-        /*animation: girar 0.9s infinite linear;*/
+main .play div .choice1 img, main .play div .choice2 img[src*="img/lizard.png"]{
+        transform: scaleX(-1);
         }
+main .play div div img[src*="img/boxing.png"].spin{
+    animation: girar 0.9s infinite linear;
+    }
 
     @keyframes girar{
         0%{
@@ -232,10 +224,6 @@ main .play div .choice1 img{
     }
 
 
-
-
-
-
 main .play div h3{
     padding: 10px;
     font-size: 4rem;
@@ -247,7 +235,43 @@ main .play .barra button{
     font-size: 4rem;
     color: var(--opt2);
     cursor: pointer; 
-    } 
+    }       
+main .play .barra button#play::after {
+    content: '';       
+    border-radius: 100%;
+    border: 2px solid var(--opt2);
+    position: absolute;
+    z-index: -1;
+    top: 72%;
+    left: 51%; 
+    transform: translate(-50%, -50%);
+    animation: ring 1.5s infinite;
+    }
+    @keyframes ring {
+        0% {          
+            width: 30px;
+            height: 30px;
+            opacity: 1;
+            }
+        100% {
+            width: 150px;
+            height: 150px;
+            opacity: 0;
+            }
+        }
+main .play .barra button:hover {
+    font-size: 4.3rem;
+}
+main .play .barra button:hover::after, main .play .barra button:focus::after {
+    animation: none;
+    display: none;      
+}        
+main .play .barra button#play.hide{
+    display: none;
+}       
+
+
+
 main .play .barra #timer{
     color: white;
     padding: 15px;
@@ -380,52 +404,75 @@ input:checked + .slider:before {
   }
 
 
-/*-----------------Dark mode----------------*/  
-.dark{
-    background-color: var(--dark-back);
-}
-.dark header, .dark footer{
-    background-color: var(--dark-header);
-}
-.dark main .options, .dark main aside{
-    background-color: var(--dark-aside);
-}
-.dark main aside h2{
-    background-color: var(--dark-buttom);
-}
-.dark main .options div{
-    border: 3px solid var(--dark-buttom);  
-}
-.dark main .options .rock{
-    background-color: var(--dark-opt1);  
-}
-.dark main .options .paper{
-    background-color: var(--dark-opt2);  
-}
-.dark main .options .scissors{
-    background-color: var(--dark-opt3);  
-}
-.dark main .options .lizard{
-    background-color: var(--dark-opt2);  
-}
-.dark main .options .spock{
-    background-color: var(--dark-opt3);  
-}
-.dark main .play .barra i{
-    color: var(--dark-buttom);
-}
-.dark main .play .barra #timer{
-    background-color: var(--dark-buttom);
-}
-.dark main .play div h3{
-    color: whitesmoke;
-}
-.dark main aside .winner p{
-    color: whitesmoke;
-}
-
-
 /*---------------------MEDIA QUERY--------------------------*/
+    
+@media (max-width: 850px) and (orientation:landscape) {
+    main aside .winner p{
+        padding: 7px;
+    }
+    header .logo img{
+        height: 57px;
+    }
+    main .rule div img{
+        height: 200px; 
+        width: 200px;
+    }
+    main .options button#option{
+        height: 60px; 
+        width: 60px;
+    }
+}
+
+@media (max-width: 680px) and (orientation:landscape) {
+    header .logo img{
+        height: 60px;
+    }
+    header .logo h1{
+        font-size: 2rem;
+        }
+    header nav ul li{
+        margin-right:20px ;
+    }
+    main .options button{
+        height: 80px;
+        width: 80px;
+        }
+    main aside .winner p{
+        padding: 6px;
+    }
+    footer{
+        padding: 6px;
+    }
+    main .rule div img{
+        height: 150px; 
+        width: 150px;
+    }
+    main .options button#option{
+        height: 55px; 
+        width: 55px;
+    }
+}
+
+@media (max-width: 570px) and (orientation:landscape) {
+    main aside .winner p{
+        padding: 3px;
+    }
+    main .options button#option{
+        height: 50px; 
+        width: 50px;
+    }
+}
+
+@media (max-width: 630px) and (orientation:portrait) {
+    main .rule{
+        flex-direction: column;
+    }
+    main .rule div img{
+        height: 150px; 
+        width: 150px;
+    }
+}
+
 @media (max-width: 460px) and (orientation:portrait) {
     header .logo h1{
         font-size: 2.5rem;
@@ -507,65 +554,9 @@ input:checked + .slider:before {
         width: 33.3%;
         padding: 4px;
         }
-    
+    main .play .barra button#play::after {
+        top: 66%;
+        left: 48%;
+    }
 
-}  
-@media (max-width: 630px) and (orientation:portrait) {
-    main .rule{
-        flex-direction: column;
-    }
-    main .rule div img{
-        height: 150px; 
-        width: 150px;
-    }
-}
-
-    
-@media (max-width: 900px) and (orientation:landscape) {
-    main aside .winner p{
-        padding: 7px;
-    }
-    header .logo img{
-        height: 57px;
-    }
-    main .rule div img{
-        height: 200px; 
-        width: 200px;
-    }
-}
-
-@media (max-width: 680px) and (orientation:landscape) {
-    header .logo img{
-        height: 60px;
-    }
-    header .logo h1{
-        font-size: 2rem;
-        }
-    header nav ul li{
-        margin-right:20px ;
-    }
-    main .options button{
-        height: 80px;
-        width: 80px;
-        }
-    main aside .winner p{
-        padding: 6px;
-    }
-    footer{
-        padding: 6px;
-    }
-    main .rule div img{
-        height: 150px; 
-        width: 150px;
-    }
-}
-
-@media (max-width: 570px) and (orientation:landscape) {
-    main aside .winner p{
-        padding: 3px;
-    }
-    main .options button{
-        height: 70px;
-        width: 70px;
-    }
 }

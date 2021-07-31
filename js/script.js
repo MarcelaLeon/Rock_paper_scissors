@@ -12,24 +12,21 @@ if (seconds === undefined){
 let timer;
 let won = 0, tied = 0, lost = 0;
 
-
 let inLocal = JSON.parse(localStorage.getItem("winners"));
 
 if(inLocal == null) {
   inLocal = [];
 }
 
-
-
 let winner= document.querySelector(".winner");
 inLocal.forEach(function(element) {
   winner.innerHTML += `<p>${element}</p>`;
 })
 
-
-function recarga() {
+function reload() {
   setTimeout(function(){ window.location.href = "index.html"}, 3000);
 }
+
 
 /**----------------Timekeeper-------------------- */
 function myFunction() {
@@ -56,10 +53,10 @@ function myFunction() {
           imageHeight: 100,
           title: 'You have won this round',
           showConfirmButton: false,
-          timer: 2000
+          timer: 3000,
+          allowOutsideClick: false
         })
-        recarga();
-        
+        reload();
       }
     else if(lost>won){
       if(inLocal.length > 6){
@@ -75,9 +72,10 @@ function myFunction() {
           imageHeight: 100,
           title: 'You have lost this round',
           showConfirmButton: false,
-          timer: 2000
+          timer: 3000,
+          allowOutsideClick: false
         })
-        recarga();
+        reload();
        }
     else{
       if(inLocal.length > 6){
@@ -92,14 +90,14 @@ function myFunction() {
           imageHeight: 100,
           title: 'You have tied this round',
           showConfirmButton: false,
-          timer: 2000
+          timer: 3000,
+          allowOutsideClick: false
         })
-        recarga();
+        reload();
        }  
     
      clearInterval(timer);
-  }
-  
+  }  
 }
 
 
@@ -119,6 +117,7 @@ clasicButton.addEventListener("click",function(){
   spock.classList.remove("show");
   localStorage.setItem('spockMode', 'disabled');
 })
+
 
 /**----------------Click lizard-spock------------------- */
 let lizardSpockButton = document.querySelector(".lizard-spock");
@@ -162,6 +161,7 @@ times.forEach(function(time){
   })
 })
 
+
 /**----------------Click rules------------------- */
 let rulesButton = document.querySelector("#rules");
 let rule = document.querySelector(".rule-back");
@@ -173,7 +173,6 @@ rulesButton.addEventListener("click",function(){
 closeButton.addEventListener("click",function(){
   rule.classList.toggle("show"); 
 })
-
 
 
 /**----------------Click menu------------------- */
@@ -200,8 +199,14 @@ questionButton.addEventListener("click",function(){
 let playButton = document.querySelector("#play");
 playButton.addEventListener("click", function(){ 
   enabled = true;
-    play(enabled);   
+    play(enabled);
+    let boxing =document.querySelectorAll("img[src='img/boxing.png']");
+    for (let box of boxing) {
+      box.classList.add("spin");
+      playButton.classList.add("hide")
+    }
 })
+
 
 /**----------------Click reset------------------- */
 let resetButton = document.querySelector("#reset");
@@ -434,14 +439,7 @@ function play(){
             won++;
             }
           }
-
-        
         }
-
-
-
     })
   })  
 }
-
-
